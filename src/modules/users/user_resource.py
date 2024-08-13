@@ -1,4 +1,3 @@
-from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 from fastapi.routing import APIRouter
 
@@ -8,8 +7,14 @@ router = APIRouter(prefix="/api")
 
 
 @router.get('/users')
-def index() -> JSONResponse:
+def all() -> JSONResponse:
     return {'message': 'user'}
+
+
+@router.get('/user/{id}')
+def show(id: int) -> JSONResponse:
+    user = UserScherma
+    return user
 
 
 @router.post('/user', response_model=UserDTOScherma)
@@ -18,8 +23,8 @@ def create(user: UserScherma) -> JSONResponse:
 
 
 @router.patch('/user/{id}')
-def update(id: int, request: Request) -> JSONResponse:
-    return {}
+def update(id: int, user: UserScherma) -> JSONResponse:
+    return user
 
 
 @router.delete('/user/{id}')
