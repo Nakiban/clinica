@@ -6,7 +6,6 @@ from pydantic import BaseModel
 class PacienteSchema(BaseModel):
     id: int
     nome: str
-    idade: int
-    sexo: int
-    etnia: int
+    data_nascimento: str
+    sexo: str
     created_at: datetime
