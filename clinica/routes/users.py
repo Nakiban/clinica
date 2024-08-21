@@ -30,8 +30,7 @@ def show(id: int, session: Session) -> JSONResponse:
     user = session.scalar(select(User).where(User.id == id))
     if not user:
         raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail="Error ao pesquisar usuario"
+            status_code=HTTPStatus.NOT_FOUND, detail='Error ao pesquisar usuario'
         )
     return user
 
@@ -67,10 +66,9 @@ def update(id: int, user: UserSchema, session: Session) -> JSONResponse:
     user = session.scalar(select(User).where(User.id == id))
 
     if not user:
-        logger.debug(f"User {id} not exists.")
+        logger.debug(f'User {id} not exists.')
         raise HTTPException(
-            status_code=HTTPStatus.NOT_FOUND,
-            detail="Error ao pesquisar usuario"
+            status_code=HTTPStatus.NOT_FOUND, detail='Error ao pesquisar usuario'
         )
 
     user.username = user.username

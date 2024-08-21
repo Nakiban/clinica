@@ -37,7 +37,7 @@ quote-style = 'single'
 [tool.taskipy.tasks]
 rdev = 'fastapi dev clinica/app.py'
 rdep = 'fastapi clinica/app.py'
-test = 'pytest -s -x --cov=clinica -vv'
+test = 'ruff check --fix . && pytest -s -x --cov=clinica -vv'
 post_test = 'coverage html'
 rf = 'ruff format .'
 

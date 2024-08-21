@@ -12,6 +12,7 @@ class Paciente:
 
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str] = mapped_column()
+    cpf: Mapped[str] = mapped_column(unique=True)
     data_nascimento: Mapped[datetime] = mapped_column()
     sexo: Mapped[str] = mapped_column()
     created_at: Mapped[datetime] = mapped_column(

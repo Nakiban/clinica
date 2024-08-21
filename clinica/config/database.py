@@ -5,7 +5,7 @@ from clinica.config.settings import settings
 
 engine = create_engine(
     settings.DATABASE_URL,
-    connect_args={"check_same_thread": False}  # Necessário apenas para SQLite
+    connect_args={'check_same_thread': False},  # Necessário apenas para SQLite
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
