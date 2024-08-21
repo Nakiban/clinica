@@ -6,9 +6,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy.pool import StaticPool
 
 from clinica.app import app
-from clinica.config.database import get_db
+from clinica.config.database import get_db, table_registry
 from clinica.config.security import create_hash
-from clinica.src.models.registry import table_registry
 from clinica.src.models.user import User
 
 
