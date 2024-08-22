@@ -9,13 +9,14 @@ from sqlalchemy.orm import Session
 
 from clinica.config.database import get_db
 from clinica.config.security import create_hash
+from clinica.routes.version import VersionAbout
 from clinica.src.models.user import User
 from clinica.src.schemas.message_schema import MessageSchema
 from clinica.src.schemas.users.user_dto import UserDTO
 from clinica.src.schemas.users.user_list import UserList
 from clinica.src.schemas.users.user_schema import UserSchema
 
-router = APIRouter(prefix='/api', tags=['User'])
+router = APIRouter(prefix=f'/api/{VersionAbout().VERSION_API}', tags=['User'])
 Session = Annotated[Session, Depends(get_db)]
 
 

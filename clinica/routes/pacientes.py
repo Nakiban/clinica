@@ -8,11 +8,12 @@ from sqlalchemy.orm import Session
 
 from clinica.config.database import get_db
 from clinica.config.log_config import logger
+from clinica.routes.version import VersionAbout
 from clinica.src.models.paciente import Paciente
 from clinica.src.schemas.message_schema import MessageSchema
 from clinica.src.schemas.pacientes import paciente_list, paciente_schema
 
-router = APIRouter(prefix='/api', tags=['Pacientes'])
+router = APIRouter(prefix=f'/api/{VersionAbout().VERSION_API}', tags=['Pacientes'])
 Session = Annotated[Session, Depends(get_db)]
 
 

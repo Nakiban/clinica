@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 from clinica.config.log_config import logger
+from clinica.routes.version import VersionAbout
 
 
 def test_create_user(client) -> None:
@@ -10,7 +11,7 @@ def test_create_user(client) -> None:
         'email': 'eduardo@hotmail.com',
     }
 
-    response = client.post('/api/user', json=user)
+    response = client.post(f'/api/{VersionAbout().VERSION_API}/user', json=user)
 
     assert response.status_code == HTTPStatus.CREATED
 
@@ -25,12 +26,12 @@ def test_create_user(client) -> None:
 
 
 def test_lista_usuarios(client) -> None:
-    response = client.get('/api/users')
+    response = client.get(f'/api/{VersionAbout().VERSION_API}/users')
     assert response.status_code == HTTPStatus.OK
 
 
 def test_usuario_existe(client, user) -> None:
-    response = client.get(f'/api/user/{user.id}')
+    response = client.get(f'/api/{VersionAbout().VERSION_API}/user/{user.id}')
 
     assert response.status_code == HTTPStatus.OK
 
@@ -42,13 +43,15 @@ def test_update_user(client, user) -> None:
         'email': 'eduardo@hotmail.com',
     }
 
-    response = client.patch(f'/api/user/{user.id}', json=data)
+    response = client.patch(
+        f'/api/{VersionAbout().VERSION_API}/user/{user.id}', json=data
+    )
 
     assert response.status_code == HTTPStatus.OK
 
 
 def test_remove_user(client, user) -> None:
-    response = client.delete(f'/api/user/{user.id}')
+    response = client.delete(f'/api/{VersionAbout().VERSION_API}/user/{user.id}')
 
     assert response.status_code == HTTPStatus.ACCEPTED
     assert response.json() == {'message': 'Deletado com sucesso.'}
@@ -56,6 +59,6 @@ def test_remove_user(client, user) -> None:
 
 def test_usuario_nao_existe(client) -> None:
     id = 0
-    response = client.get(f'/api/user/{id}')
+    response = client.get(f'/api/{VersionAbout().VERSION_API}/user/{id}')
 
     assert response.status_code == HTTPStatus.NOT_FOUND
