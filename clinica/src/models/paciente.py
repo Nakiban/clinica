@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import func
 from sqlalchemy.orm import Mapped, mapped_column
 
-from clinica.config.database import table_registry
+from clinica.src.config.database import table_registry
 
 
 @table_registry.mapped_as_dataclass

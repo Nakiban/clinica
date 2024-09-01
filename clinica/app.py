@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 
-from clinica.config.log_config import logger
-from clinica.routes import pacientes, users
+from clinica.src.config.log_config import logger
+from clinica.src.routes import pacientes, users
 
 app = FastAPI()
 

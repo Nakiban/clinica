@@ -1,14 +1,8 @@
 from datetime import datetime
-from enum import Enum
 
 from pydantic import BaseModel
 
-
-class SexoEnum(Enum):
-    MASCULINO = 'masculino'
-    FEMININO = 'feminino'
-    OUTRO = 'outro'
-    NAO_DECLARADO = 'não declarado'
+from .sexo_enum import SexoEnum
 
 
 class PacienteSchema(BaseModel):
